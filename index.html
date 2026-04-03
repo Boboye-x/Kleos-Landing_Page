@@ -274,14 +274,42 @@
     .reveal { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.in { opacity: 1; transform: none; }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE MOBILE FIXES */
     @media (max-width: 640px) {
-      .hero h1 { font-size: 44px; }
+      .hero {
+        padding: 80px 16px 60px;
+      }
+      .hero h1 {
+        font-size: 36px;
+        line-height: 1.2;
+      }
+      .hero-tagline {
+        font-size: 12px;
+      }
+      .hero-drop {
+        font-size: 11px;
+        margin-bottom: 30px;
+      }
+      .email-box {
+        flex-direction: column;
+        max-width: 90%;
+        margin: 0 auto 20px;
+        gap: 12px;
+      }
+      .email-box input[type="email"] {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 12px;
+        border-right: 1px solid rgba(255,255,255,0.15);
+        border-bottom: none;
+      }
+      .email-box button {
+        width: 100%;
+        padding: 12px;
+        font-size: 12px;
+      }
       .products { grid-template-columns: 1fr; }
       .nav-left, .nav-right { display: none; }
-      .email-box { flex-direction: column; }
-      .email-box input[type="email"] { border-right: 1px solid rgba(255,255,255,0.15); border-bottom: none; width: 100%; }
-      .email-box button { width: 100%; }
     }
   </style>
 </head>
