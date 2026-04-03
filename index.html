@@ -102,10 +102,10 @@
     .hero-drop {
       font-size: 10px; font-weight: 400;
       letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 52px;
+      color: var(--gold); margin-bottom: 32px;
     }
 
-    /* EMAIL BOX */
+    /* EMAIL BOX / WAITLIST */
     .email-box {
       display: flex; justify-content: center; align-items: center;
       gap: 0; max-width: 440px; margin: 0 auto;
@@ -122,6 +122,7 @@
       letter-spacing: 0.08em;
       outline: none;
       transition: border-color 0.2s;
+      min-width: 0;
     }
     .email-box input[type="email"]::placeholder {
       color: rgba(255,255,255,0.3);
@@ -143,6 +144,7 @@
       transition: background 0.2s, color 0.2s;
       white-space: nowrap;
       border-radius: 0;
+      min-width: 0;
     }
     .email-box button:hover {
       background: var(--gold);
@@ -274,29 +276,28 @@
     .reveal { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.in { opacity: 1; transform: none; }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE / MOBILE OPTIMIZATION */
     @media (max-width: 640px) {
       .hero {
-        padding: 80px 16px 60px;
+        padding: 60px 16px 60px;
       }
-      .hero-eyebrow {
-        font-size: 8px;
-      }
-      .hero h1 {
-        font-size: 36px;
-      }
-      .hero-tagline {
-        font-size: 10px;
-      }
-      .hero-drop {
-        font-size: 9px;
-        margin-bottom: 32px;
-      }
+      .hero h1 { font-size: 44px; }
       .products { grid-template-columns: 1fr; }
       .nav-left, .nav-right { display: none; }
-      .email-box { flex-direction: column; gap: 8px; }
+
+      /* Stack email input and button */
+      .email-box {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        max-width: 320px;
+      }
       .email-box input[type="email"],
-      .email-box button { width: 100%; height: 40px; font-size: 10px; }
+      .email-box button {
+        width: 100%;
+        border-right: 1px solid rgba(255,255,255,0.15);
+        border-bottom: none;
+      }
     }
   </style>
 </head>
@@ -377,7 +378,7 @@
         </div>
         <div class="product-info">
           <div class="p-name">The Kleos Red</div>
-          <div class="p-sub">Gothic KL print, burdungy wool and brown flat brim</div>
+          <div class="p-sub">Gothic KL print, burgundy wool and brown flat brim</div>
           <div class="p-status">Dropping Soon</div>
         </div>
       </div>
@@ -411,13 +412,13 @@
   </footer>
 
   <script>
-    // REVEAL ANIMATION
+    // Reveal animations
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
     }, { threshold: 0.05 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // WAITLIST FORM JS
+    // Waitlist form submission
     const form = document.getElementById('waitlistForm');
     const successMsg = document.getElementById('successMsg');
 
