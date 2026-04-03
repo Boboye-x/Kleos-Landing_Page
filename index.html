@@ -8,7 +8,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    : root {
+    :root {
       --white:  #ffffff;
       --black:  #0a0a0a;
       --grey:   #888888;
@@ -274,42 +274,29 @@
     .reveal { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .reveal.in { opacity: 1; transform: none; }
 
-    /* RESPONSIVE MOBILE FIXES */
+    /* RESPONSIVE */
     @media (max-width: 640px) {
       .hero {
         padding: 80px 16px 60px;
       }
+      .hero-eyebrow {
+        font-size: 8px;
+      }
       .hero h1 {
         font-size: 36px;
-        line-height: 1.2;
       }
       .hero-tagline {
-        font-size: 12px;
+        font-size: 10px;
       }
       .hero-drop {
-        font-size: 11px;
-        margin-bottom: 30px;
-      }
-      .email-box {
-        flex-direction: column;
-        max-width: 90%;
-        margin: 0 auto 20px;
-        gap: 12px;
-      }
-      .email-box input[type="email"] {
-        width: 100%;
-        padding: 12px 16px;
-        font-size: 12px;
-        border-right: 1px solid rgba(255,255,255,0.15);
-        border-bottom: none;
-      }
-      .email-box button {
-        width: 100%;
-        padding: 12px;
-        font-size: 12px;
+        font-size: 9px;
+        margin-bottom: 32px;
       }
       .products { grid-template-columns: 1fr; }
       .nav-left, .nav-right { display: none; }
+      .email-box { flex-direction: column; gap: 8px; }
+      .email-box input[type="email"],
+      .email-box button { width: 100%; height: 40px; font-size: 10px; }
     }
   </style>
 </head>
@@ -424,6 +411,7 @@
   </footer>
 
   <script>
+    // REVEAL ANIMATION
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
     }, { threshold: 0.05 });
